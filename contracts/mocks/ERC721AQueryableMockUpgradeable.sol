@@ -22,7 +22,7 @@ contract ERC721AQueryableMockUpgradeable is
 
     function __ERC721AQueryableMock_init_unchained(string memory, string memory) internal onlyInitializingERC721A {}
 
-    function safeMint(address to, uint256 quantity) public {
-        _safeMint(to, quantity);
+    function safeMint(address to, uint256 quantity, uint256 sales) public {
+        _safeMint(to, quantity, sales);
     }
 }

@@ -20,8 +20,8 @@ contract ERC721ABurnableMockUpgradeable is ERC721A__Initializable, ERC721AUpgrad
         return _exists(tokenId);
     }
 
-    function safeMint(address to, uint256 quantity) public {
-        _safeMint(to, quantity);
+    function safeMint(address to, uint256 quantity, uint256 sales) public {
+        _safeMint(to, quantity, sales);
     }
 
     function getOwnershipAt(uint256 index) public view returns (TokenOwnership memory) {

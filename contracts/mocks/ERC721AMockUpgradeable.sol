@@ -47,20 +47,21 @@ contract ERC721AMockUpgradeable is ERC721A__Initializable, ERC721AUpgradeable {
         return _exists(tokenId);
     }
 
-    function safeMint(address to, uint256 quantity) public {
-        _safeMint(to, quantity);
+    function safeMint(address to, uint256 quantity, uint256 sales) public {
+        _safeMint(to, quantity, sales);
     }
 
     function safeMint(
         address to,
         uint256 quantity,
+        uint256 sales,
         bytes memory _data
     ) public {
-        _safeMint(to, quantity, _data);
+        _safeMint(to, quantity, sales, _data);
     }
 
-    function mint(address to, uint256 quantity) public {
-        _mint(to, quantity);
+    function mint(address to, uint256 quantity, uint256 sales) public {
+        _mint(to, quantity, sales);
     }
 
     function burn(uint256 tokenId) public {

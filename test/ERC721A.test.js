@@ -105,9 +105,9 @@ const createTestSuite = ({ contract, constructorArgs }) =>
             tokens: offsetted(3, 4, 5),
           };
 
-          await this.erc721a['safeMint(address,uint256)'](addr1.address, this.addr1.expected.mintCount);
-          await this.erc721a['safeMint(address,uint256)'](addr2.address, this.addr2.expected.mintCount);
-          await this.erc721a['safeMint(address,uint256)'](addr3.address, this.addr3.expected.mintCount);
+          await this.erc721a['safeMint(address,uint256,uint256)'](addr1.address, this.addr1.expected.mintCount, 0);
+          await this.erc721a['safeMint(address,uint256,uint256)'](addr2.address, this.addr2.expected.mintCount, 0);
+          await this.erc721a['safeMint(address,uint256,uint256)'](addr3.address, this.addr3.expected.mintCount, 0);
         });
 
         describe('tokenURI (ERC721Metadata)', async function () {

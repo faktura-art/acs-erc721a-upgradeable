@@ -19,19 +19,19 @@ contract ERC721AGasReporterMockUpgradeable is ERC721A__Initializable, ERC721AUpg
     function __ERC721AGasReporterMock_init_unchained(string memory, string memory) internal onlyInitializingERC721A {}
 
     function safeMintOne(address to) public {
-        _safeMint(to, 1);
+        _safeMint(to, 1, 0);
     }
 
     function mintOne(address to) public {
-        _mint(to, 1);
+        _mint(to, 1, 0);
     }
 
     function safeMintTen(address to) public {
-        _safeMint(to, 10);
+        _safeMint(to, 10, 0);
     }
 
     function mintTen(address to) public {
-        _mint(to, 10);
+        _mint(to, 10, 0);
     }
 
     function transferTenAsc(address to) public {

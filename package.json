@@ -1,7 +1,7 @@
 {
-  "name": "erc721a-upgradeable",
+  "name": "@faktura-art/acs-erc721a-upgradeable",
   "version": "4.1.0",
-  "description": "ERC721A Upgradeable contract for Solidity",
+  "description": "Faktura ERC721A Upgradeable contract for Solidity",
   "files": [
     "/contracts/**/*.sol",
     "/build/contracts/*.json",
@@ -15,6 +15,9 @@
     "lint": "npm run lint:js && npm run lint:sol",
     "lint:js": "eslint --ignore-path .gitignore . --fix",
     "lint:sol": "prettier --write \"contracts/**/*.sol\""
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.4.2",
@@ -36,12 +39,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chiru-labs/ERC721A-Upgradeable.git"
+    "url": "git+https://github.com/faktura-art/acs-erc721a-upgradeable.git"
   },
-  "author": "chiru-labs",
+  "author": "Faktura",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chiru-labs/ERC721A-Upgradeable/issues"
+    "url": "https://github.com/faktura-art/acs-erc721a-upgradeable/issues"
   },
-  "homepage": "https://github.com/chiru-labs/ERC721A-Upgradeable#readme"
+  "homepage": "https://github.com/faktura-art/acs-erc721a-upgradeable#readme"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@faktura-art/acs-erc721a-upgradeable",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Faktura ERC721A Upgradeable contract for Solidity",
   "files": [
     "/contracts/**/*.sol",

@@ -136,6 +136,17 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
     }
 
     /**
+     * @dev Returns the total amount of tokens minted in the contract by Sales.
+     */
+    function _totalMintedByCategories(uint256 category) internal view returns (uint256) {
+        // Counter underflow is impossible as _currentIndex does not decrement,
+        // and it is initialized to `_startTokenId()`
+        unchecked {
+            return ERC721AStorage.layout()._currentCategoriesIndex[category] - _startTokenId();
+        }
+    }
+
+    /**
      * @dev Returns the total amount of tokens minted in the contract by Address by Sales.
      */
     function _totalMintedByAddress(address to, uint256 sales) internal view returns (uint256) {
@@ -420,8 +431,8 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
     /**
      * @dev Equivalent to `_safeMint(to, quantity, sales, '')`.
      */
-    function _safeMint(address to, uint256 quantity, uint256 sales) internal {
-        _safeMint(to, quantity, sales, '');
+    function _safeMint(address to, uint256 quantity, uint256 sales, uint256 category) internal {
+        _safeMint(to, quantity, sales, category, '');
     }
 
     /**
@@ -441,9 +452,10 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
         address to,
         uint256 quantity,
         uint256 sales,
+        uint256 category,
         bytes memory _data
     ) internal {
-        _mint(to, quantity, sales);
+        _mint(to, quantity, sales, category);
 
         unchecked {
             if (to.code.length != 0) {
@@ -470,9 +482,10 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
      *
      * Emits a {Transfer} event for each mint.
      */
-    function _mint(address to, uint256 quantity, uint256 sales) internal {
+    function _mint(address to, uint256 quantity, uint256 sales, uint256 category) internal {
         uint256 startTokenId = ERC721AStorage.layout()._currentIndex;
         uint256 startSalesId = ERC721AStorage.layout()._currentSalesIndex[sales];
+        uint256 startCategoriesId = ERC721AStorage.layout()._currentCategoriesIndex[category];
         uint256 startAddressId = ERC721AStorage.layout()._currentAddressIndex[to][sales];
 
         if (to == address(0)) revert MintToZeroAddress();
@@ -509,6 +522,7 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
 
             ERC721AStorage.layout()._currentIndex = end;
             ERC721AStorage.layout()._currentSalesIndex[sales] = startSalesId + quantity;
+            ERC721AStorage.layout()._currentCategoriesIndex[category] = startCategoriesId + quantity;
             ERC721AStorage.layout()._currentAddressIndex[to][sales] = startAddressId + quantity;
         }
         _afterTokenTransfers(address(0), to, startTokenId, quantity);

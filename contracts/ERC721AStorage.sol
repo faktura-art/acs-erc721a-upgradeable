@@ -6,10 +6,12 @@ import {ERC721AUpgradeable} from './ERC721AUpgradeable.sol';
 
 library ERC721AStorage {
     struct Layout {
-        // The tokenId of the next token to be minted by Sales.
+        // The tokenId of the next token to be minted by Address.
         mapping(address => mapping(uint256 => uint256)) _currentAddressIndex;
         // The tokenId of the next token to be minted by Sales.
         mapping(uint256 => uint256) _currentSalesIndex;
+        // The tokenId of the next token to be minted by Sales.
+        mapping(uint256 => uint256) _currentCategoriesIndex;
         // The tokenId of the next token to be minted.
         uint256 _currentIndex;
         // The number of tokens burned.

@@ -131,7 +131,7 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
         // Counter underflow is impossible as _currentIndex does not decrement,
         // and it is initialized to `_startTokenId()`
         unchecked {
-            return ERC721AStorage.layout()._currentSalesIndex[sales] - _startTokenId();
+            return ERC721AStorage.layout()._currentSalesIndex[sales];
         }
     }
 
@@ -142,7 +142,7 @@ contract ERC721AUpgradeable is ERC721A__Initializable, IERC721AUpgradeable {
         // Counter underflow is impossible as _currentIndex does not decrement,
         // and it is initialized to `_startTokenId()`
         unchecked {
-            return ERC721AStorage.layout()._currentCategoriesIndex[category] - _startTokenId();
+            return ERC721AStorage.layout()._currentCategoriesIndex[category];
         }
     }
 

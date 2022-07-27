@@ -2,9 +2,12 @@
 
 pragma solidity ^0.8.0;
 
-import {ERC721AUpgradeable} from './ERC721AUpgradeable.sol';
-
 library ERC721AStorage {
+    // Reference type for token approval.
+    struct TokenApprovalRef {
+        address value;
+    }
+
     struct Layout {
         // The tokenId of the next token to be minted by Address.
         mapping(address => mapping(uint256 => uint256)) _currentAddressIndex;
@@ -22,7 +25,7 @@ library ERC721AStorage {
         string _symbol;
         // Mapping from token ID to ownership details
         // An empty struct value does not necessarily mean the token is unowned.
-        // See `_packedOwnershipOf` implementation for details.
+        // See {_packedOwnershipOf} implementation for details.
         //
         // Bits Layout:
         // - [0..159]   `addr`
@@ -40,7 +43,7 @@ library ERC721AStorage {
         // - [192..255] `aux`
         mapping(address => uint256) _packedAddressData;
         // Mapping from token ID to approved address.
-        mapping(uint256 => address) _tokenApprovals;
+        mapping(uint256 => ERC721AStorage.TokenApprovalRef) _tokenApprovals;
         // Mapping from owner to operator approvals
         mapping(address => mapping(address => bool)) _operatorApprovals;
     }

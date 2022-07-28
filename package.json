@@ -16,9 +16,6 @@
     "lint:js": "eslint --ignore-path .gitignore . --fix",
     "lint:sol": "prettier --write \"contracts/**/*.sol\""
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "devDependencies": {
     "@openzeppelin/contracts": "^4.4.2",
     "@nomiclabs/hardhat-ethers": "^2.0.4",
